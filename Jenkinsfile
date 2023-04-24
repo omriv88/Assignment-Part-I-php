@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                sh 'rm -r -f *'
+                sh 'rm -r -f *' 
                 git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
                 sh 'docker stop $(docker ps -a -q)'
                 sh 'docker rm $(docker ps -a -q)'
