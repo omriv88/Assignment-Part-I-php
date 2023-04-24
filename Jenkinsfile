@@ -2,7 +2,7 @@
 pipeline {
     agent {label 'AWS-DOCKER'}
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('docker-hub')
+        DOCKERHUB_CREDENTIALS=credentials('docker-hub') 
     }
 
     stages {
