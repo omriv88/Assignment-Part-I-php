@@ -19,8 +19,8 @@ pipeline {
         }
         stage('Create Docker image') {
             steps {
-                sh 'docker build -t omriv/nginx_php7.4-fp:7 .'
-                sh 'docker run -d -p 80:80 omriv/nginx_php7.4-fp:7'
+                sh 'docker build -t omriv/nginx_php7.4-fp:1 .'
+                sh 'docker run -d -p 80:80 omriv/nginx_php7.4-fp:1'
             }
         }
         stage('Upload the image 1/2') {
@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Upload the image 2/2') {
             steps {
-                sh 'docker push omriv/nginx_php7.4-fp:7'
+                sh 'docker push omriv/nginx_php7.4-fp:1'
                 sh 'docker logout'
             }
         }
