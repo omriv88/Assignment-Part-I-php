@@ -34,7 +34,7 @@ pipeline {
                 sh 'docker logout'
             }
         }
-        stage('cleanup') {
+        stage('cleanup_k8s') {
             agent {label 'LOCAL'}
                 steps {
                     bat 'kubectl delete deploy nginx-php'
@@ -42,7 +42,7 @@ pipeline {
                     bat 'kubectl get pods'
                 }
             }
-            stage('deploy') {
+            stage('deploy_kubernetes') {
             agent {label 'LOCAL'}
                 steps {
                     git branch: 'main', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
