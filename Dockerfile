@@ -4,5 +4,5 @@ RUN apt-get update && \
 
 COPY index.php /var/www/html/index.php 
 COPY default /etc/nginx/sites-available/default
-EXPOSE 80
+EXPOSE 80 
 CMD service php7.4-fpm start && nginx -g 'daemon off;'
