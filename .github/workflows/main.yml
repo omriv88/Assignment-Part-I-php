@@ -1,0 +1,17 @@
+name: Jenkins Job Trigger
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger-jenkins-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins Job
+        uses: peter-evans/http-request@v2
+        with:
+          method: POST
+          url: '${{ secrets.JENKINS_URL }}/job/${{ secrets.JENKINS_JOB }}'
+          headers: |
+            Content-Type: application/x-www-form-urlencoded
+          data: |
+            token=${{ secrets.JENKINS_TOKEN }}
