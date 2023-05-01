@@ -9,7 +9,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 sh 'rm -r -f *'  
-                git branch: 'master', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
+
+                git branch: 'develop', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
+
                 sh 'docker stop $(docker ps -a -q)'
                 sh 'docker rm $(docker ps -a -q)'
                 sh 'docker rmi $(docker images -q)'
@@ -45,7 +47,8 @@ pipeline {
             stage('deploy_kubernetes') {
             agent {label 'LOCAL'}
                 steps {
-                    git branch: 'master', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
+
+                    git branch: 'develop', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
                     bat 'kubectl apply -f ./deployment.yml'
                     bat 'kubectl get svc'
                 }
