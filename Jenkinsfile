@@ -9,7 +9,9 @@ pipeline {
         stage('Checkout') {
             steps {
                 sh 'rm -r -f *'  
+
                 git branch: 'develop', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
+
                 sh 'docker stop $(docker ps -a -q)'
                 sh 'docker rm $(docker ps -a -q)'
                 sh 'docker rmi $(docker images -q)'
@@ -19,8 +21,8 @@ pipeline {
         }
         stage('Create Docker image') {
             steps {
-                sh 'docker build -t omriv/nginx_php7.4-fp:3 .'
-                sh 'docker run -d -p 80:80 omriv/nginx_php7.4-fp:3'
+                sh 'docker build -t omriv/nginx_php7.4-fp:13 .'
+                sh 'docker run -d -p 80:80 omriv/nginx_php7.4-fp:13'
             }
         }
         stage('Upload the image 1/2') {
@@ -30,7 +32,7 @@ pipeline {
         }
         stage('Upload the image 2/2') {
             steps {
-                sh 'docker push omriv/nginx_php7.4-fp:3'
+                sh 'docker push omriv/nginx_php7.4-fp:13'
                 sh 'docker logout'
             }
         }
@@ -45,6 +47,7 @@ pipeline {
             stage('deploy_kubernetes') {
             agent {label 'LOCAL'}
                 steps {
+
                     git branch: 'develop', credentialsId: 'GITHUB', url: 'https://github.com/omriv88/Assignment-Part-I-php'
                     bat 'kubectl apply -f ./deployment.yml'
                     bat 'kubectl get svc'
