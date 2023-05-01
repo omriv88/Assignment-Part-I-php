@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx-php
-        image: omriv/nginx_php7.4-fp
+        image: omriv/nginx_php7.4-fp:13
         ports:
         - containerPort: 80
 ---
