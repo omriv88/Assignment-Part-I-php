@@ -1,8 +1,8 @@
 # Assignment-Part-I-php
 Create CI/CD Pipeline in Jenkins, run the Pipeline from GitHub Actions
 
- - 1 Create k8s cluster + private docker registry (Skip this step if already exists)
- - 2 Create docker image (nginx web server + php-fpm with index.php inside) You should be able to modify the content of index.php file
+ - 1 Create Kubernetes cluster + private Docker registry (Skip this step if already exists)
+ - 2 Create Docker image (Nginx web server + php-fpm with index.php inside) You should be able to modify the content of index.php file
  - ![image](https://github.com/omriv88/Assignment-Part-I-php/assets/113102456/a46c8537-9cdb-4257-bed0-de230bc762f7)
 
  - 3 Upload the image to the docker registry.
