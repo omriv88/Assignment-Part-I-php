@@ -24,3 +24,10 @@ networks:
 
 volumes:
   jenkins-data:
+
+
+
+docker run -d \
+  --name jenkins-slave \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkins/jnlp-slave:lts
